@@ -30,13 +30,18 @@ app.use(cors(corsOption));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Route
+// sync databases
+db.sequelize.sync();
 
+// Route
 app.get("/", (req, res) => {
   res.json({
     message: "welcome to express-mysql",
   });
 });
+
+// post route
+require("./app/routes/PostRoutes")(app);
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || 8080;

@@ -5,7 +5,9 @@ const Op = db.Sequelize.Op;
 // create
 exports.create = (req, res) => {
   if (!req.body.title) {
-    res.status(400).send({ message: "content cannot be empty" });
+    res.status(400).send({
+      message: "content cannot be empty",
+    });
     return;
   }
   const post = {
@@ -15,15 +17,13 @@ exports.create = (req, res) => {
   };
 
   Post.create(post)
-    .then((result) => {
+    .then((data) => {
       res.send(data);
     })
     .catch((err) => {
-      res
-        .status(500)
-        .send({
-          messages: err.message || "some erroe occured while creating post",
-        });
+      res.status(500).send({
+        messages: err.message || "some error occured while creating post",
+      });
     });
 };
 
