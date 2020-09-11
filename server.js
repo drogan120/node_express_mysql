@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotENV = require("dotenv");
 
+// models
+const db = require("./app/models");
+
 dotENV.config();
 
 const app = express();
