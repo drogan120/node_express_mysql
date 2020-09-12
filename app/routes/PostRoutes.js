@@ -4,5 +4,8 @@ module.exports = (app) => {
 
   //   create new post
   router.post("/", posts.create);
+  // Retrieve all post
+  router.get("/", posts.findAll);
+
   app.use("/api/posts", router);
 };
